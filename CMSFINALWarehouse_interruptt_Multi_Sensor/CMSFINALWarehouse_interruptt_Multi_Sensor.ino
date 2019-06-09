@@ -1,8 +1,8 @@
 #include "DHT.h"
 #define DHTPIN1 3 // Temp/Hum Sensor is Connected to Pin 4
-#define DHTPIN2 4
+#define DHTPIN2 7
 #define DHTPIN3 6
-#define DHTPIN4 7
+#define DHTPIN4 4
 #define doorPin 2 // Door Sensor is Connected to Pin 2
 #define lcdPin1 A4 //Door Open Indicator
 #define lcdPin2 10 //Door Close Indicator
