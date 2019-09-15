@@ -9,7 +9,7 @@
 #define lcdPin3 13  //Data Sending Indicator
 #define SENSORNUMBERADDRESS 2
 #define INITIALIZATIONSTATUSADDRESS 1
-#define DEVICECALIBRATIONADDRESS 3
+#define DEVICECALIBRATIONADDRESS 60
 #define DEVICEPASSWORDADDRESS 100
 #define DEVICEAPIADDRESS 150
 #define DEVICEINTERVALADDRESS 50
@@ -167,13 +167,6 @@ char* readTempHumSensor() // Function to Check Temperature + Humidity Value
   }
   dtostrf((atof(avgTemperatureValue)/deviceSensorNumber),4,2,avgTemperatureValue);
   dtostrf((atof(avgHumidityValue)/deviceSensorNumber),4,2,avgHumidityValue);
-//  strcat(allSensorsValue,"AT");
-//  strcat(allSensorsValue,avgTemperatureValue);
-//  strcat(allSensorsValue,",");
-//  strcat(allSensorsValue,"AH");
-//  strcat(allSensorsValue,avgHumidityValue);
-//  strcat(allSensorsValue,"+");
-
   delay(2000);
   lcd.clear();
   lcd.setCursor(0,0);
@@ -777,6 +770,8 @@ byte setCalibrationFactor(byte calValue,char calSymbol)
     calibrationSymbol = char(EEPROM.read(DEVICECALIBRATIONADDRESS+1));
     return 1;
   }
+  calibrationValue = int(EEPROM.read(DEVICECALIBRATIONADDRESS));
+  calibrationSymbol = char(EEPROM.read(DEVICECALIBRATIONADDRESS+1));
   return 0;
 }
 
